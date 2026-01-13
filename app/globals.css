@@ -1,0 +1,196 @@
+@import "tailwindcss";
+
+:root {
+  --background: #080C15;
+  --foreground: #F8FAFC;
+
+  --card: #0B1220;
+  --popover: #0B1220;
+
+  --primary: #21a178;
+  --secondary: #121B2C;
+  --text-muted-foreground: #7588A3;
+
+  --destructive: #F87171;
+
+  --border: #1A2745;
+  --input: #121B2C;
+  --ring: #21a178;
+
+  --radius: 0.75rem;
+
+  /* Custom tokens */
+  --glow-primary: #21a178;
+  --gradient-start: #21a178;
+  --gradient-end: #1e8866;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    border-color: var(--border);
+  }
+
+  html,
+  body {
+    height: 100%;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: "Inter", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+/* =========================
+   Components
+========================= */
+@layer components {
+  .glass-card {
+    background-color: rgb(from var(--card) r g b / 0.5);
+    backdrop-filter: blur(24px);
+    border: 1px solid #16213c80;
+    border-radius: 1rem;
+    box-shadow: 0 0 40px 5px
+      rgb(from var(--glow-primary) r g b / 0.15);
+  }
+
+  .feature-card {
+    background-color: rgb(from var(--card) r g b / 0.5);
+    backdrop-filter: blur(24px);
+    border: 1px solid rgb(from var(--border) r g b / 0.5);
+    border-radius: 1rem;
+    box-shadow: 0 0 30px -10px
+      rgb(from var(--glow-primary) r g b / 0.15);
+  }
+
+  .glow-text {
+    text-shadow: 0 0 40px
+      rgb(from var(--primary) r g b / 0.5);
+  }
+
+  .gradient-text {
+    background-image: linear-gradient(
+      135deg,
+      var(--gradient-start),
+      var(--gradient-end)
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+
+  .gradient-border {
+    position: relative;
+    border-radius: inherit;
+  }
+
+  .gradient-border::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    border-radius: inherit;
+    background: linear-gradient(
+      135deg,
+      var(--gradient-start),
+      var(--gradient-end)
+    );
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+
+  .input-glow:focus-within {
+    box-shadow:
+      0 0 0 2px rgb(from var(--primary) r g b / 0.3),
+      0 0 30px -5px rgb(from var(--primary) r g b / 0.4);
+  }
+
+  .btn-glow {
+    box-shadow: 0 0 20px -5px
+      rgb(from var(--primary) r g b / 0.5);
+    transition: all 0.3s ease;
+  }
+
+  .btn-glow:hover {
+    box-shadow: 0 0 30px -5px
+      rgb(from var(--primary) r g b / 0.7);
+    transform: translateY(-2px);
+  }
+
+  .platform-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 0.75rem;
+    background-color: #10192d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #7588a3;
+    transition: all 0.3s ease;
+  }
+
+  .platform-icon:hover {
+    background-color: rgb(from var(--primary) r g b / 0.12);
+    color: var(--primary);
+    box-shadow: 0 0 20px -5px
+      rgb(from var(--primary) r g b / 0.5);
+  }
+}
+
+/* =========================
+   Text Utilities
+========================= */
+.text-muted-foreground {
+  color: #7588a3 !important;
+}
+
+.text-foreground {
+  color: #f8fafc !important;
+}
+
+/* =========================
+   Animations
+========================= */
+@layer utilities {
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-glow {
+    0%,
+    100% {
+      box-shadow: 0 0 20px -5px
+        rgb(from var(--primary) r g b / 0.5);
+    }
+    50% {
+      box-shadow: 0 0 40px -5px
+        rgb(from var(--primary) r g b / 0.8);
+    }
+  }
+}
