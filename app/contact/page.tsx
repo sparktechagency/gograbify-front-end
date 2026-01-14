@@ -1,8 +1,9 @@
 import Contact from "@/features/contact";
 
+
 const ContactPage = () => {
-    return (
-        <div>
+    return ( 
+        <div> 
            <Contact />
         </div>
     );

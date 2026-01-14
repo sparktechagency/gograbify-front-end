@@ -2,10 +2,11 @@
 import { useState } from "react";
 import { Download, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { PlatformIcons } from "./PlatformIcons";
-import { DownloadTable } from "./DownloadTable";
 import { toast } from "sonner";
-import Advertisement from "./Advertisement";
+import Advertisement from "@/components/Advertisement";
+import { DownloadTable } from "@/components/DownloadTable";
+import { PlatformIcons } from "@/components/PlatformIcons";
+
 export const HeroSection = () => {
   const [url, setUrl] = useState("");
   const [isLoading, setIsLoading] = useState(false);
