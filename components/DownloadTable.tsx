@@ -38,10 +38,10 @@ export const DownloadTable = () => {
   return (
     <div className="w-full animate-in fade-in slide-in-from-bottom-4 duration-500">
       {/* Table Header */}
-      <div className="grid grid-cols-3 gap-4 px-4 py-3 bg-muted/50 rounded-t-xl border-b border-border">
+      <div className="grid grid-cols-3 gap-4 md:px-4 px-2 py-3 bg-muted/50 rounded-t-xl border-b border-border">
         <span className="text-sm font-semibold text-foreground">Format</span>
         <span className="text-sm font-semibold text-foreground text-center">Quality</span>
-        <span className="text-sm font-semibold text-foreground text-right">Download</span>
+        <span className="text-sm font-semibold text-foreground md:text-right text-center">Download</span>
       </div>
 
 
@@ -51,7 +51,7 @@ export const DownloadTable = () => {
         {visibleOptions.map((option, index) => (
           <div 
             key={`${option.format}-${option.quality}`}
-            className="grid grid-cols-3 gap-4 items-center px-4 py-3 hover:bg-muted/30 transition-colors"
+            className="grid grid-cols-3 gap-4 items-center md:px-4 px-2 py-3 hover:bg-muted/30 transition-colors"
           >
             <span className="text-sm font-medium text-muted-foreground">{option.format}</span>
             <span className="text-sm font-medium text-muted-foreground text-center">
@@ -62,18 +62,18 @@ export const DownloadTable = () => {
                 onClick={() => handleDownload(option, index)}
                 disabled={loadingIndex === index}
                 // size="sm" 
-                className="bg-primary text-white font-medium px-4 py-2 h-auto min-w-32.5"
+                className="bg-primary text-white font-medium px-4 py-2 h-auto min-w-32.5 md:text-[16px] text-sm "
               >
                 {loadingIndex === index ? (
                   <div className="w-4 h-4 border-2 border-white border-t-transparent text-white rounded-full animate-spin" />
                 ) : option.type === "video" ? (
                   <>
-                    <Download className="w-4 h-4 mr-2" />
+                    <Download className="w-4 h-4 mr-2 md:block hidden" />
                     Download video
                   </>
                 ) : (
                   <>
-                    <Music className="w-4 h-4 mr-2" />
+                    <Music className="w-4 h-4 mr-2 md:block hidden" />
                     Download audio
                   </>
                 )}

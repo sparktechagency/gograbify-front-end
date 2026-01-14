@@ -26,7 +26,7 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <main className=" pb-16 px-4">
+      <main className="pb-20 pt-8 px-4">
         <div className="max-w-2xl mx-auto">
           <h1 className="text-4xl font-bold mb-4 text-center">Contact Us</h1>
           <p className="text-muted-foreground text-center mb-8">

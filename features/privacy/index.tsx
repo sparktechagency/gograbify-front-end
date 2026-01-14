@@ -3,12 +3,12 @@
 const Privacy = () => {
   return (
     <div className="min-h-screen bg-background">
-      <main className=" pb-16 px-4">
+      <main className="pb-20 pt-8 px-4">
         <div className="max-w-300 mx-auto text-base">
-          <h1 className="text-2xl font-semibold mb-8">Privacy Policy</h1>
+          <h1 className="text-2xl font-semibold mb-1">Privacy Policy</h1>
           
           <div className="prose prose-invert prose-sm max-w-none space-y-6 text-muted-foreground">
-            <p className="text-foreground">Last updated: {new Date().toLocaleDateString()}</p>
+            <p className="text-white/50 text-sm">Last updated: {new Date().toLocaleDateString()}</p>
 
             <section className=" pb-4">
               <h2 className="text-xl font-medium text-foreground mb-1.5">Information We Collect</h2>

@@ -38,7 +38,7 @@ export const HeroSection = () => {
   };
 
   return (
-    <section className={`min-h-screen   flex flex-col items-center pt-10   relative overflow-hidden`}>
+    <section className={`min-h-screen   flex flex-col items-center md:pt-10 pt-20 ${showOptions? "pb-10": "pb-0"}    relative overflow-hidden`}>
       {/* Background effects */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#21a178]/10 rounded-full blur-3xl animate-float" />
@@ -47,12 +47,12 @@ export const HeroSection = () => {
 
       <div className="relative z-10 max-w-3xl w-full text-center">
         {/* Title */}
-        <h1 className="text-5xl md:text-6xl font-semibold mb-9 leading-tight">
+        <h1 className="text-4xl md:text-6xl font-semibold md:mb-9 mb-5 leading-tight">
           Download Videos
           <span className="block gradient-text glow-text">Fast & Free</span>
         </h1>
         
-        <p className=" text-muted-foreground text-lg  mb-6 max-w-xl mx-auto">
+        <p className=" text-muted-foreground md:text-lg text-sm  mb-6 max-w-xl mx-auto">
           Paste any video URL from YouTube, TikTok, Instagram, or Facebook and download in seconds. No watermarks.
         </p>
 
@@ -60,7 +60,7 @@ export const HeroSection = () => {
         <PlatformIcons />
 
         {/* URL Input Form */}
-        <form onSubmit={handleSubmit} className="mt-20">
+        <form onSubmit={handleSubmit} className="md:mt-20 mt-14">
           <div className="glass-card p-2 input-glow transition-all duration-300">
             <div className="flex flex-col sm:flex-row gap-2">
               <input

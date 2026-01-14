@@ -2,12 +2,12 @@
 const Terms = () => {
   return (
     <div className="min-h-screen bg-background">
-      <main className=" pb-16 px-4">
+      <main className=" pb-20 pt-8 px-4">
         <div className="max-w-300 mx-auto">
-          <h1 className="text-2xl font-semibold mb-8">Terms of Service</h1>
+          <h1 className="text-2xl font-semibold mb-1">Terms of Service</h1>
           
           <div className="prose prose-invert prose-sm max-w-none space-y-6 text-muted-foreground">
-            <p className="text-foreground">Last updated: {new Date().toLocaleDateString()}</p>
+            <p className="text-white/50 text-sm">Last updated: {new Date().toLocaleDateString()}</p>
 
             <section className="mb-4">
               <h2 className="text-xl font-medium text-foreground mb-1.5">Acceptance of Terms</h2>

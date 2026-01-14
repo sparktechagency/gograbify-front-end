@@ -5,9 +5,9 @@ const LegalSafety = () => {
   return (
     <div className="min-h-screen bg-background">
    
-      <main className=" pb-16 px-4">
+      <main className="pb-20 pt-8 px-4">
         <div className="max-w-300 mx-auto text-muted-foreground text-[16px]">
-          <div className="text-center my-12">
+          <div className="text-center mb-12">
 
             <h1 className="text-[26px] text-foreground font-medium mb-4">Legal & Safety Requirements</h1>
             <p className="text-muted-foreground text-[16px] max-w-2xl mx-auto">
