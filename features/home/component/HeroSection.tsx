@@ -73,10 +73,10 @@ export const HeroSection = () => {
               <Button 
                 type="submit" 
                 disabled={isLoading}
-                className="btn-glow bg-primary text-primary-foreground font-semibold px-6 py-3 h-auto hover:bg-primary/90 disabled:opacity-50 cursor-pointer transition-all duration-300 text-white"
+                className="btn-glow bg-primary text-primary-foreground font-semibold px-6 py-3 h-auto hover:bg-primary/90 disabled:opacity-50 cursor-pointer transition-all duration-300 text-white md:min-w-38 "
               >
                 {isLoading ? (
-                  <Loader2 className="w-5 h-5 animate-spin" />
+                  <Loader2 className="w-5 h-5 animate-spin text-white" />
                 ) : (
                   <>
                     <Download className="w-5 h-5 mr-2" />

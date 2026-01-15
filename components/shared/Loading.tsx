@@ -1,9 +1,8 @@
 import Image from "next/image";
 
-
 const Loading = () => {
     return (
-        <div className="flex min-h-screen items-center justify-center bg-[#080C15]">
+                <div className="flex min-h-screen items-center justify-center bg-[#080C15]">
             <div className="flex flex-col items-center gap-6">
 
                 <div className="flex items-center gap-2 animate-logoFadeIn ">
@@ -16,7 +15,7 @@ const Loading = () => {
                     />
                 </div>
             </div>
-        </div>
+        </div> 
     );
 };
 

@@ -62,19 +62,19 @@ export const DownloadTable = () => {
                 onClick={() => handleDownload(option, index)}
                 disabled={loadingIndex === index}
                 // size="sm" 
-                className="bg-primary text-white font-medium px-4 py-2 h-auto min-w-32.5 md:text-[16px] text-sm "
+                className="bg-primary text-white font-medium px-4 py-2 h-9.5 md:min-w-47.5 min-w-30.5 min-h-9.5 md:text-[16px] text-sm "
               >
                 {loadingIndex === index ? (
                   <div className="w-4 h-4 border-2 border-white border-t-transparent text-white rounded-full animate-spin" />
                 ) : option.type === "video" ? (
                   <>
-                    <Download className="w-4 h-4 mr-2 md:block hidden" />
-                    Download video
+                    <Download className="w-4 h-4 md:mr-2" />
+                    Download <span className=" md:block hidden">video</span> 
                   </>
                 ) : (
                   <>
-                    <Music className="w-4 h-4 mr-2 md:block hidden" />
-                    Download audio
+                    <Music className="w-4 h-4 md:mr-2" />
+                    Download <span className=" md:block hidden">audio</span>
                   </>
                 )}
               </Button>
