@@ -6,14 +6,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 
-
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const toggleMenu = () => setIsMenuOpen((prev) => !prev);
   const closeMenu = () => setIsMenuOpen(false);
-
   const  pathname  = usePathname();  
-  console.log("pathname", pathname);
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border/50">
@@ -37,7 +34,7 @@ export const Header = () => {
               href={href}
               className={`text-sm font-medium hover:text-foreground   transition-colors ${
                 pathname === href ? "text-white" : "text-muted-foreground"
-              }`} // Add conditional class for active link
+              }`} 
             >
               {label}
             </Link>
@@ -66,7 +63,7 @@ export const Header = () => {
                 onClick={closeMenu}
                 className={`px-4 py-3 rounded-lg text-sm font-medium  hover:bg-secondary hover:text-foreground transition-colors ${
                   pathname === href ? "text-white" : "text-muted-foreground"
-                }`} // Add conditional class for active link
+                }`} 
               >
                 {label}
               </Link>

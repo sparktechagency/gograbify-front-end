@@ -1,6 +1,6 @@
-import { FeaturesSection } from "@/features/home/component/FeaturesSection";
-import { HeroSection } from "@/features/home/component/HeroSection";
-import { HowItWorks } from "@/features/home/component/HowItWorks";
+import { FeaturesSection } from "@/features/home/components/FeaturesSection";
+import { HeroSection } from "@/features/home/components/HeroSection";
+import { HowItWorks } from "@/features/home/components/HowItWorks";
 
 const Home = () => {
   return (

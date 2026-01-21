@@ -5,9 +5,15 @@ import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import Advertisement from "@/components/Advertisement";
 import { DownloadTable } from "@/components/DownloadTable";
-import { PlatformIcons } from "@/components/PlatformIcons";
+import { PlatformIcons } from "@/components/PlatformIcons"; 
 
-export const HeroSection = () => {
+type info = {
+  title: string; 
+  subtitle: string;
+  description: string; 
+}
+
+export const DownloadVideoSection = ({info}:{info:info}) => {
   const [url, setUrl] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [showOptions, setShowOptions] = useState(false);
@@ -45,15 +51,15 @@ export const HeroSection = () => {
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#21a178]/5 rounded-full blur-3xl animate-float" style={{ animationDelay: "-3s" }} />
       </div>
 
-      <div className="relative z-10 max-w-3xl w-full text-center">
+      <div className="relative z-10 max-w-4xl w-full text-center">
         {/* Title */}
         <h1 className="text-4xl md:text-6xl font-semibold md:mb-9 mb-5 leading-tight">
-          Download Videos
-          <span className="block gradient-text glow-text">Fast & Free</span>
+         {info.title}
+          <span className="block gradient-text glow-text">{info.subtitle}</span>
         </h1>
         
         <p className=" text-muted-foreground md:text-lg text-sm  mb-6 max-w-xl mx-auto">
-          Paste any video URL from YouTube, TikTok, Instagram, or Facebook and download in seconds. No watermarks.
+        {info?.description}
         </p>
 
         {/* Platform Icons */}

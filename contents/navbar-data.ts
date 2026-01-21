@@ -1,9 +1,9 @@
 const NAV_LINKS = [
   { label: "Home", href: "/" },
-  { label: "Privacy", href: "/privacy" },
-  { label: "Terms", href: "/terms" },
-  { label: "DMCA", href: "/dmca" },
-  { label: "Legal & Safety", href: "/legal-safety" },
+  { label: "YouTube", href: "/youtube-video-downloader" },
+  { label: "Facebook", href: "/facebook-video-downloader" },
+  { label: "Instagram", href: "/instagram-video-downloader" },
+  { label: "Tiktok", href: "/tiktok-video-downloader" },
 ]; 
 
 export { NAV_LINKS };
