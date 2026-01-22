@@ -9,9 +9,9 @@ export const Footer = () => {
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           {/* Logo */}
-          <div className="flex items-center gap-2">
+          <Link href="/" className="flex items-center gap-2">
             <Image src="/logo.png" alt="VidGrab Logo" width={122} height={32} />
-          </div>
+          </Link>
 
           {/* Legal Links */}
           <nav className="flex flex-wrap items-center justify-center gap-6 text-sm">

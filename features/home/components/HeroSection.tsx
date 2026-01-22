@@ -4,8 +4,8 @@ import { Playball, Recursive } from 'next/font/google';
 import { FloatingIcons } from "@/components/FloatingIcons";
 
 const playball = Playball({
-  weight: '400', 
-  style: 'normal', 
+  weight: '400',
+  style: 'normal',
   subsets: ['latin'],
 });
 
@@ -34,7 +34,7 @@ export const HeroSection = () => {
     rounded-full blur-3xl animate-float"
           style={{ animationDelay: "-3s" }}
         />
- <FloatingIcons />
+        <FloatingIcons />
         {/* 🔥 Center Image */}
         <div
           className="absolute inset-0 flex items-center justify-center opacity-7"

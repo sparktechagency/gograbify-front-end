@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { Download, Music, ChevronDown, ChevronUp, Sparkles } from "lucide-react";
+import { Download, Music, ChevronDown, ChevronUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 
