@@ -3,6 +3,7 @@ import DownloadBox from '@/components/DownloadBox';
 import InfoBox from '@/components/InfoBox';
 import InstructionStep from '@/components/InstructionStep';
 import { steps } from '@/contents/downloader-pages-data';
+import Image from 'next/image';
 
 export function InstructionSection() {
  
@@ -11,7 +12,7 @@ export function InstructionSection() {
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
-          <h2 className="text-4xl mb-4">
+          <h2 className="md:text-4xl text-3xl mb-4">
             How to <span className="text-primary">Download</span> YouTube Videos
           </h2>
           <p className="text-muted-foreground text-lg">
@@ -25,9 +26,11 @@ export function InstructionSection() {
           <div className="order-2 lg:order-1 relative rounded-2xl overflow-hidden border-2 border-border bg-secondary/30 p-6">
             <BrowserBox url="youtube.com/watch?v=dQw4w9WgXcQ" />
             <div className="relative rounded-lg overflow-hidden">
-              <img
+              <Image
                 src="https://images.unsplash.com/photo-1762330471883-27a187343022?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx5b3V0dWJlJTIwYnJvd3NlciUyMGludGVyZmFjZXxlbnwxfHx8fDE3Njg5OTE1MjR8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-                alt="YouTube interface example"
+                alt="YouTube interface example" 
+                width={400} 
+                height={300}
                 className="w-full h-auto"
               />
             </div>

@@ -6,6 +6,7 @@ import {
   infoCardsInstagram,
 } from "@/contents/downloader-pages-data";
 import { InfoCard } from "./InfoCard ";
+import Image from "next/image";
 
 function InstructionSectionInstagram() {
   return (
@@ -13,7 +14,7 @@ function InstructionSectionInstagram() {
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
-          <h2 className="text-4xl mb-4">
+          <h2 className="md:text-4xl text-3xl mb-4">
             How to <span className="text-primary">Download</span> Instagram Videos
           </h2>
           <p className="text-muted-foreground text-lg">
@@ -28,9 +29,11 @@ function InstructionSectionInstagram() {
             <BrowserBox url="instagram.com/p/ABC123xyz/" />
 
             <div className="relative rounded-lg overflow-hidden">
-              <img
-                src="https://images.unsplash.com/photo-1621158529432-d8966f21fadd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
-                alt="Instagram interface example"
+              <Image
+                src="https://images.unsplash.com/photo-1616469829935-c2f33ebd89b8?q=80&w=370&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="Instagram interface example"  
+                width={400} 
+                height={300}
                 className="w-full h-auto"
               />
             </div>

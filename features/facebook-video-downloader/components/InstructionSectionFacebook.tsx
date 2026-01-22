@@ -3,6 +3,7 @@ import DownloadBox from '@/components/DownloadBox'
 import InstructionStep from '@/components/InstructionStep'
 import { infoCards, stepsFacebook } from '@/contents/downloader-pages-data'
 import { InfoCard } from './InfoCard '
+import Image from 'next/image'
 
 function InstructionSectionFacebook() {
   return (
@@ -10,7 +11,7 @@ function InstructionSectionFacebook() {
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
-          <h2 className="text-4xl mb-4">
+          <h2 className="md:text-4xl text-3xl mb-4">
             How to <span className="text-primary">Download</span> Facebook Videos
           </h2>
           <p className="text-muted-foreground text-lg">
@@ -24,9 +25,11 @@ function InstructionSectionFacebook() {
           <div className="order-2 lg:order-1 relative rounded-2xl overflow-hidden border-2 border-border bg-secondary/30 p-6">
             <BrowserBox url='facebook.com/watch?v=123456789' />
             <div className="relative rounded-lg overflow-hidden">
-              <img
+              <Image
                 src="https://images.unsplash.com/photo-1762340276507-5c46c4abc69d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmYWNlYm9vayUyMG1vYmlsZSUyMGludGVyZmFjZXxlbnwxfHx8fDE3Njg5OTQ1MTh8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-                alt="Facebook interface example"
+                alt="Facebook interface example" 
+                width={400} 
+                height={300}
                 className="w-full h-auto"
               />
             </div>
