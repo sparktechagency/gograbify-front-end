@@ -29,7 +29,7 @@ export function InstructionSection() {
               <Image
                 src="https://images.unsplash.com/photo-1762330471883-27a187343022?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx5b3V0dWJlJTIwYnJvd3NlciUyMGludGVyZmFjZXxlbnwxfHx8fDE3Njg5OTE1MjR8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
                 alt="YouTube interface example" 
-                width={400} 
+                width={600} 
                 height={300}
                 className="w-full h-auto"
               />

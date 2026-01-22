@@ -30,9 +30,9 @@ function InstructionSectionInstagram() {
 
             <div className="relative rounded-lg overflow-hidden">
               <Image
-                src="https://images.unsplash.com/photo-1616469829935-c2f33ebd89b8?q=80&w=370&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                src="https://images.unsplash.com/photo-1616469829935-c2f33ebd89b8?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                 alt="Instagram interface example"  
-                width={400} 
+                width={600} 
                 height={300}
                 className="w-full h-auto"
               />

@@ -28,7 +28,7 @@ function InstructionSectionFacebook() {
               <Image
                 src="https://images.unsplash.com/photo-1762340276507-5c46c4abc69d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmYWNlYm9vayUyMG1vYmlsZSUyMGludGVyZmFjZXxlbnwxfHx8fDE3Njg5OTQ1MTh8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
                 alt="Facebook interface example" 
-                width={400} 
+                width={600} 
                 height={300}
                 className="w-full h-auto"
               />

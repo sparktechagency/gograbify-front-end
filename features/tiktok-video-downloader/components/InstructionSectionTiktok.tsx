@@ -31,9 +31,9 @@ function InstructionSectionTiktok() {
 
             <div className="relative rounded-lg overflow-hidden">
               <Image
-                src="https://images.unsplash.com/photo-1642141325625-f76034e4ad2b?q=80&w=371&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                src="https://images.unsplash.com/photo-1642141325625-f76034e4ad2b?q=80&w=1071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                 alt="TikTok interface example" 
-                width={400} 
+                width={600} 
                 height={300}
                 className="w-full h-auto"
               />
