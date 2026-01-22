@@ -11,10 +11,10 @@ function InstructionSectionFacebook() {
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
-          <h2 className="md:text-4xl text-3xl mb-4">
+          <h2 className="md:text-4xl text-3xl mb-4 font-semibold">
             How to <span className="text-primary">Download</span> Facebook Videos
           </h2>
-          <p className="text-muted-foreground text-lg">
+          <p className="text-muted-foreground max-w-xl mx-auto">
             Follow these simple steps to download any Facebook video
           </p>
         </div>

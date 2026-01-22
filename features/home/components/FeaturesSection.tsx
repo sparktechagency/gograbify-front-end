@@ -1,44 +1,11 @@
-import { Zap, Shield, Smartphone, Globe, Music, Ban } from "lucide-react";
-
-const features = [
-  {
-    icon: Zap,
-    title: "Lightning Fast",
-    description: "Download videos in seconds with our optimized servers",
-  },
-  {
-    icon: Shield,
-    title: "Safe & Secure",
-    description: "No malware, no tracking. Your privacy is protected",
-  },
-  {
-    icon: Smartphone,
-    title: "Mobile Friendly",
-    description: "Works perfectly on any device, anywhere, anytime",
-  },
-  {
-    icon: Globe,
-    title: "Multi-Platform",
-    description: "YouTube, TikTok, Instagram, Facebook all supported",
-  },
-  {
-    icon: Music,
-    title: "Audio Extract",
-    description: "Convert any video to MP3 audio format instantly",
-  },
-  {
-    icon: Ban,
-    title: "No Watermarks",
-    description: "Download clean videos without any watermarks",
-  },
-];
+import { features } from "@/contents/home-data";
 
 export const FeaturesSection = () => {
   return (
     <section className="py-20 px-4 relative">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+          <h2 className="text-3xl sm:text-4xl font-semibold mb-4">
             Why Choose <span className="gradient-text">Us?</span>
           </h2>
           <p className="text-muted-foreground max-w-xl mx-auto">
