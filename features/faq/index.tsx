@@ -31,10 +31,10 @@ export const FAQ = () => {
   };
 
   return (
-    <section className="pt-16 bg-background min-h-[calc(100vh-8rem)]">
-      <div className="container mx-auto px-4 max-w-3xl">
-        <h2 className="text-3xl font-semibold text-center mb-8">
-          Frequently Asked Questions
+    <section className="pb-20 bg-background ">
+      <div className="container mx-auto px-4 max-w-5xl">
+        <h2 className="text-3xl sm:text-4xl font-semibold text-center mb-16">
+          Frequently Asked <span className="text-primary">Questions</span>
         </h2>
         <div className="space-y-4">
           {faqData.map((faq, index) => (

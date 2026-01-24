@@ -8,14 +8,14 @@ const pages = [
   { href: "/terms", label: "Terms of Service" },
   { href: "/dmca", label: "DMCA" },
   { href: "/legal-safety", label: "Legal & Safety" },
-  { href: "/faq", label: "FAQ" },
+  // { href: "/faq", label: "FAQ" },
   { href: "/contact", label: "Contact" },
 ];
 
 export const Footer = () => {
   return (
     <footer className="border-t border-border bg-background">
-      <div className="max-w-6xl mx-auto px-4 py-12">
+      <div className="max-w-6xl mx-auto px-4 py-8">
         {/* Top Section */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           {/* Logo */}
@@ -48,12 +48,12 @@ export const Footer = () => {
 
           {/* Copyright */}
           <p className="text-sm text-white/90 text-center md:text-right">
-            © {CURRENT_YEAR} VidGrab. All rights reserved.
+            © {CURRENT_YEAR} GoGrabify. All rights reserved.
           </p>
         </div>
 
         {/* Bottom Section */}
-        <div className="mt-8 pt-6 border-t border-border text-center">
+        <div className="mt-8 pt-8 border-t border-border text-center">
           <p className="text-sm text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             VidGrab is a fast and secure online video downloader supporting
             YouTube, TikTok, Instagram, and Facebook. Our free tool helps users
