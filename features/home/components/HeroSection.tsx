@@ -52,13 +52,12 @@ export const HeroSection = () => {
       {/* Main Content */}
       <div className="relative z-10 max-w-5xl w-full text-center px-4">
         <h1 className="bg-linear-to-r from-white via-emerald-100 to-white bg-clip-text text-transparent text-5xl md:text-[80px] font-bold md:mb-9 mb-5 leading-tight">
-          Download Any Video
-          <span className={`${playball.className} ${recursive.className} block text-primary`} > Fast & Free </span>
+          GoGrabify – Free Online
+          <span className={`${playball.className} ${recursive.className} block text-primary`} > Video Downloader </span>
         </h1>
 
-        <p className="text-white/80 md:text-lg text-sm md:mb-8 mb-6 max-w-xl mx-auto">
-          Paste a link and download instantly from your favorite platforms  fast,
-          free, and without watermarks.
+        <p className="text-white/70 md:text-[16px] text-sm md:mb-8 mb-6 max-w-3xl mx-auto">
+          GoGrabify is a fast, free, and secure online video downloader that allows you to download videos from YouTube, TikTok, Instagram, and Facebook in HD quality. Our tool supports MP4 and MP3 formats and works on all devices without installing any software.
         </p>
 
         <PlatformIcons />

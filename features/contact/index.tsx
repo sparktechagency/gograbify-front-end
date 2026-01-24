@@ -25,13 +25,42 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-[calc(100vh-8rem)] bg-background">
       <main className="pb-20 pt-8 px-4">
         <div className="max-w-2xl mx-auto">
-          <h1 className="text-4xl font-bold mb-4 text-center">Contact Us</h1>
+          <h1 className="text-3xl font-semibold mb-2 text-center">Contact GoGrabify</h1>
           <p className="text-muted-foreground text-center mb-8">
-            Have questions or feedback? We&apos;d love to hear from you.
+            We&apos;d love to hear from you!
           </p>
+
+          <div className="glass-card p-6 mb-8 text-center bg-secondary/30">
+            <p className="mb-4">
+              For support, business inquiries, or feedback, please contact us:
+            </p>
+            <div className="space-y-2 mb-4">
+              <p className="flex items-center justify-center gap-2">
+                <span className="text-xl">📧</span>
+                <a href="mailto:info@gograbify.com" className="hover:text-primary transition-colors">
+                  info@gograbify.com
+                </a>
+              </p>
+              <p className="flex items-center justify-center gap-2">
+                <span className="text-xl">🌐</span>
+                <span>Website:</span>
+                <a 
+                  href="https://gograbify.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="hover:text-primary transition-colors"
+                >
+                  https://gograbify.com
+                </a>
+              </p>
+            </div>
+            <p className="text-sm text-muted-foreground">
+              We usually respond within 24–48 hours.
+            </p>
+          </div>
           
           <form onSubmit={handleSubmit} className="glass-card p-6 space-y-6">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
