@@ -1,6 +1,6 @@
 # GoGrabify - Ultimate Video Downloader
 
-![GoGrabify Banner](https://gograbify-front-end.vercel.app/opengraph-image.png)
+![GoGrabify Banner](public/logo.png)
 
 > **Live Demo:** [gograbify-front-end.vercel.app](https://gograbify-front-end.vercel.app/)
 
