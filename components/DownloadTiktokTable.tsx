@@ -1,6 +1,8 @@
 "use client";
 import { useState } from "react";
 import { Download, Music, ChevronDown, ChevronUp } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
 
 interface DownloadOption {
   format: string;
@@ -9,50 +11,42 @@ interface DownloadOption {
   url: string;
 }
 
-export const DownloadTable = ({ data }: { data: any }) => {
+export const DownloadTiktokTable = ({ data }: { data: any }) => {
   const [showAll, setShowAll] = useState(false);
   const [loadingIndex, setLoadingIndex] = useState<number | null>(null);
-  const audioFormats = ["mp3", "m4a", "aac", "wav", "ogg", "opus", "webm"];
   console.log("data", data);
 
-  const videoData = data?.map((item: any) => ({
-    format: item.ext,
-    quality: item.height
-      ? item.height === null
-        ? "Auto"
-        : item.height + "p"
-      : "Auto",
-    type: audioFormats.includes(item.ext) ? "audio" : "video",
-    url: item.videoUrl,
-  }));
-  console.log("videoData", videoData);
+  const videoData: DownloadOption[] = [
+    ...(data?.video?.map((url: string) => ({
+      format: "mp4",
+      quality: "HD",
+      type: "video",
+      url: url,
+    })) || []),
+
+    ...(data?.audio?.map((url: string) => ({
+      format: "mp3",
+      quality: "Audio",
+      type: "audio",
+      url: url,
+    })) || []),
+  ];
+
   const visibleOptions = showAll ? videoData : videoData?.slice(0, 6);
 
-  //   const downloadFile = async (url: string, index: number, format: string) => {
-  //   try {
-  //     setLoadingIndex(index);
-  //     console.log(encodeURI(url));
+  const handleDownload = (option: any, index: number) => {
+    setLoadingIndex(index);
 
-  //     const res = await fetch(url);
-  //     const blob = await res.blob();
-
-  //     const blobUrl = window.URL.createObjectURL(blob);
-
-  //     const a = document.createElement("a");
-  //     a.href = blobUrl;
-  //     a.download = `video.${format}`;
-
-  //     document.body.appendChild(a);
-  //     a.click();
-  //     a.remove();
-
-  //     window.URL.revokeObjectURL(blobUrl);
-  //   } catch (error) {
-  //     console.error("Download failed", error);
-  //   } finally {
-  //     setLoadingIndex(null);
-  //   }
-  // };
+    setTimeout(() => {
+      setLoadingIndex(null);
+      window.open(option.url, "_blank");
+      toast.success(
+        `Download started: ${option.format.toUpperCase()} ${
+          option.type === "video" ? option.quality + "p" : "Audio"
+        }`,
+      );
+    }, 500);
+  };
 
   return (
     <div className="w-full animate-in fade-in slide-in-from-bottom-4 duration-500">
@@ -86,12 +80,10 @@ export const DownloadTable = ({ data }: { data: any }) => {
 
             {/* Download */}
             <div className="flex justify-end">
-              <a
-                href={option.url}
-                target="_blank"
-                download
-                //  onClick={() => downloadFile(option.url, index, option.format)}
-                className="bg-primary text-white font-medium px-4 py-2 h-9.5 md:min-w-47.5 min-w-30.5 min-h-9.5 md:text-[16px] text-sm flex items-center gap-2"
+              <Button
+                onClick={() => handleDownload(option, index)}
+                disabled={loadingIndex === index}
+                className="bg-primary text-white font-medium px-4 py-2 h-9.5 md:min-w-47.5 min-w-30.5 min-h-9.5 md:text-[16px] text-sm"
               >
                 {loadingIndex === index ? (
                   <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
@@ -106,7 +98,7 @@ export const DownloadTable = ({ data }: { data: any }) => {
                     Download <span className="md:block hidden">audio</span>
                   </>
                 )}
-              </a>
+              </Button>
             </div>
           </div>
         ))}

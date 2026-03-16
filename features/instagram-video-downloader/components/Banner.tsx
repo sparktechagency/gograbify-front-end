@@ -5,6 +5,7 @@ const Banner = () => {
         <div>
            <DownloadVideoSection info={{
             title: "Instagram Video Download",
+            type: "instagram",
             subtitle: "Fast, Free & Secure",
             description: "Download Instagram videos online in HD MP4 format. Paste the video link and start downloading instantly."
            }} />

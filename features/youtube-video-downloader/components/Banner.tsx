@@ -4,7 +4,8 @@ const Banner = () => {
     return (
         <div>
            <DownloadVideoSection info={{
-            title: "Download YouTube Videos ",
+            title: "Download YouTube Videos ", 
+            type: "youtube",
             subtitle: "Fast & Hassle-Free",
             description: "Download your favorite YouTube videos instantly in high-quality MP4 format. Watch offline anytime, anywhere."
            }} />

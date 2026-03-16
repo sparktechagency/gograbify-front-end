@@ -5,6 +5,7 @@ const Banner = () => {
         <div>
            <DownloadVideoSection info={{
             title: "Facebook Video Download",
+            type: "facebook",
             subtitle: "Fast, Free & Secure",
             description: "Download Facebook videos online in HD MP4 format. Paste the video link and start downloading instantly."
            }} />
