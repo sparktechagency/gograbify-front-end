@@ -22,7 +22,8 @@ export const DownloadVideoSection = ({ info }: { info: info }) => {
   const [url, setUrl] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [showOptions, setShowOptions] = useState(false);
-  const [videoId, setVideoId] = useState<string | null>(null);
+  const [videoId, setVideoId] = useState<string | null>(null); 
+  const [searchUrl, setSearchUrl] = useState("");
   const { data } = useVideoStatus({ videoId, setIsLoading });
   console.log("data", data);
 
@@ -48,7 +49,8 @@ export const DownloadVideoSection = ({ info }: { info: info }) => {
       });
 
       if (res?.success) {
-        const videoId = res.data;
+        const videoId = res.data; 
+        setSearchUrl(url);
         setVideoId(videoId);
         setShowOptions(true);
         setIsLoading(true);
@@ -134,7 +136,7 @@ export const DownloadVideoSection = ({ info }: { info: info }) => {
                 </span>
               </div>
             ) : data?.length > 0 ? (
-              <DownloadTable data={data} />
+              <DownloadTable data={data} searchUrl={searchUrl} />
             ) : (
               <DownloadTiktokTable data={data} />
             )}

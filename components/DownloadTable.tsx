@@ -1,21 +1,16 @@
 "use client";
 import { useState } from "react";
 import { Download, Music, ChevronDown, ChevronUp } from "lucide-react";
+import { toast } from "sonner";
+import { myFetch } from "@/helpers/myFetch";
 
-interface DownloadOption {
-  format: string;
-  quality: string;
-  type: "video" | "audio";
-  url: string;
-}
-
-export const DownloadTable = ({ data }: { data: any }) => {
+export const DownloadTable = ({ data, searchUrl }: { data: { formatId: string; ext: string; height: number | null; videoUrl: string; }[]; searchUrl: string }) => {
   const [showAll, setShowAll] = useState(false);
   const [loadingIndex, setLoadingIndex] = useState<number | null>(null);
   const audioFormats = ["mp3", "m4a", "aac", "wav", "ogg", "opus", "webm"];
-  console.log("data", data);
 
-  const videoData = data?.map((item: any) => ({
+  const videoData = data?.map((item: { formatId: string; ext: string; height: number | null; videoUrl: string; }) => ({
+    formatId: item.formatId,
     format: item.ext,
     quality: item.height
       ? item.height === null
@@ -28,31 +23,39 @@ export const DownloadTable = ({ data }: { data: any }) => {
   console.log("videoData", videoData);
   const visibleOptions = showAll ? videoData : videoData?.slice(0, 6);
 
-  //   const downloadFile = async (url: string, index: number, format: string) => {
-  //   try {
-  //     setLoadingIndex(index);
-  //     console.log(encodeURI(url));
 
-  //     const res = await fetch(url);
-  //     const blob = await res.blob();
+  const downloadFile = async (url: string, formatId: string, ext: string, index: number) => {
+    const payload = {
+      url: url,
+      formatId: formatId,
+      ext: ext,
+    };
 
-  //     const blobUrl = window.URL.createObjectURL(blob);
+    try {
+      setLoadingIndex(index);
 
-  //     const a = document.createElement("a");
-  //     a.href = blobUrl;
-  //     a.download = `video.${format}`;
-
-  //     document.body.appendChild(a);
-  //     a.click();
-  //     a.remove();
-
-  //     window.URL.revokeObjectURL(blobUrl);
-  //   } catch (error) {
-  //     console.error("Download failed", error);
-  //   } finally {
-  //     setLoadingIndex(null);
-  //   }
-  // };
+      const res = await myFetch("/downloader/download", {
+        method: "POST",
+        body: payload,
+      });
+      console.log("res get data", res);
+      if (res?.success) {
+        const downloadUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/downloader/download/${res.data}`;
+        const link = document.createElement("a");
+        link.href = downloadUrl;
+        link.download = "";
+        link.click();
+        setLoadingIndex(null);
+      } else {
+        toast.error(res?.message || "Something went wrong!");
+        setLoadingIndex(null);
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error("Request failed");
+      setLoadingIndex(null);
+    }
+  };
 
   return (
     <div className="w-full animate-in fade-in slide-in-from-bottom-4 duration-500">
@@ -69,7 +72,7 @@ export const DownloadTable = ({ data }: { data: any }) => {
 
       {/* Download Options */}
       <div className="divide-y divide-border">
-        {visibleOptions?.map((option: any, index: number) => (
+        {visibleOptions?.map((option: { format: string; quality: string; type: string; url: string; formatId: string; }, index: number) => (
           <div
             key={`${option.format}-${option.quality}-${index}`}
             className="grid grid-cols-3 gap-4 items-center md:px-4 px-2 py-3 hover:bg-muted/30 transition-colors"
@@ -86,15 +89,14 @@ export const DownloadTable = ({ data }: { data: any }) => {
 
             {/* Download */}
             <div className="flex justify-end">
-              <a
-                href={option.url}
-                target="_blank"
-                download
-                //  onClick={() => downloadFile(option.url, index, option.format)}
-                className="bg-primary text-white font-medium px-4 py-2 h-9.5 md:min-w-47.5 min-w-30.5 min-h-9.5 md:text-[16px] text-sm flex items-center gap-2"
+              <div
+                onClick={() => downloadFile(searchUrl, option?.formatId, option.format, index)}
+                className={`bg-primary text-white font-medium px-4 py-2 h-9.5 md:min-w-47.5 min-w-30.5 min-h-9.5 md:text-[16px] text-sm flex items-center gap-2   ${loadingIndex === index ? "cursor-not-allowed opacity-70 " : "cursor-pointer"} `}
               >
                 {loadingIndex === index ? (
-                  <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                  <div className="w-full flex items-center justify-center">
+                    <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                  </div>
                 ) : option.type === "video" ? (
                   <>
                     <Download className="w-4 h-4 md:mr-2" />
@@ -106,7 +108,7 @@ export const DownloadTable = ({ data }: { data: any }) => {
                     Download <span className="md:block hidden">audio</span>
                   </>
                 )}
-              </a>
+              </div>
             </div>
           </div>
         ))}
