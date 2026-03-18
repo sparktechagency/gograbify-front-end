@@ -1,23 +1,22 @@
 import { useState, useEffect } from "react";
 import { socket } from "@/lib/socket";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type VideoData = any;
 
 export function useVideoStatus({
-  videoId,
+  event,
   setIsLoading,
 }: {
-  videoId: string | null;
+  event: string | null;
   setIsLoading: (loading: boolean) => void;
 }) {
   const [data, setData] = useState<VideoData | null>(null);
 
   useEffect(() => {
-    if (!videoId) return;
+    if (!event) return;
 
-    const event = `video::${videoId}`;
-
-    const handleData = (payload: any) => {
+    const handleData = (payload: VideoData) => {
       setData(payload);
       setIsLoading(false);
     };
@@ -28,7 +27,7 @@ export function useVideoStatus({
     return () => {
       socket.off(event, handleData);
     };
-  }, [videoId]);
+  }, [event, setIsLoading]);
 
   return { data };
 }

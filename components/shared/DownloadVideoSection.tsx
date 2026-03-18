@@ -22,9 +22,10 @@ export const DownloadVideoSection = ({ info }: { info: info }) => {
   const [url, setUrl] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [showOptions, setShowOptions] = useState(false);
-  const [videoId, setVideoId] = useState<string | null>(null); 
+  const [videoId, setVideoId] = useState<string | null>(null);
   const [searchUrl, setSearchUrl] = useState("");
-  const { data } = useVideoStatus({ videoId, setIsLoading });
+ const event = videoId ? `video::${videoId}` : null;
+  const { data } = useVideoStatus({ event, setIsLoading });
   console.log("data", data);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -49,7 +50,7 @@ export const DownloadVideoSection = ({ info }: { info: info }) => {
       });
 
       if (res?.success) {
-        const videoId = res.data; 
+        const videoId = res.data;
         setSearchUrl(url);
         setVideoId(videoId);
         setShowOptions(true);

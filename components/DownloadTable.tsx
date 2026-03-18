@@ -3,11 +3,13 @@ import { useState } from "react";
 import { Download, Music, ChevronDown, ChevronUp } from "lucide-react";
 import { toast } from "sonner";
 import { myFetch } from "@/helpers/myFetch";
+import { socket } from "@/lib/socket";
 
 export const DownloadTable = ({ data, searchUrl }: { data: { formatId: string; ext: string; height: number | null; videoUrl: string; }[]; searchUrl: string }) => {
   const [showAll, setShowAll] = useState(false);
   const [loadingIndex, setLoadingIndex] = useState<number | null>(null);
   const audioFormats = ["mp3", "m4a", "aac", "wav", "ogg", "opus", "webm"];
+  const [progressMap, setProgressMap] = useState<Record<number, number>>({});
 
   const videoData = data?.map((item: { formatId: string; ext: string; height: number | null; videoUrl: string; }) => ({
     formatId: item.formatId,
@@ -24,27 +26,45 @@ export const DownloadTable = ({ data, searchUrl }: { data: { formatId: string; e
   const visibleOptions = showAll ? videoData : videoData?.slice(0, 6);
 
 
-  const downloadFile = async (url: string, formatId: string, ext: string, index: number) => {
-    const payload = {
-      url: url,
-      formatId: formatId,
-      ext: ext,
+  const downloadFile = async (
+    url: string,
+    formatId: string,
+    ext: string,
+    index: number
+  ) => {
+    const event = `progress::${formatId}${ext}`;
+
+    const handleProgress = (value: number) => {
+      console.log("progress", value);
+
+      setProgressMap((prev) => ({
+        ...prev,
+        [index]: value,
+      }));
+
+      if (value >= 100) {
+        socket.off(event, handleProgress);
+      }
     };
+
+    socket.on(event, handleProgress);
 
     try {
       setLoadingIndex(index);
 
       const res = await myFetch("/downloader/download", {
         method: "POST",
-        body: payload,
+        body: { url, formatId, ext },
       });
-      console.log("res get data", res);
+
       if (res?.success) {
         const downloadUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/downloader/download/${res.data}`;
+
         const link = document.createElement("a");
         link.href = downloadUrl;
         link.download = "";
         link.click();
+
         setLoadingIndex(null);
       } else {
         toast.error(res?.message || "Something went wrong!");
@@ -56,7 +76,6 @@ export const DownloadTable = ({ data, searchUrl }: { data: { formatId: string; e
       setLoadingIndex(null);
     }
   };
-
   return (
     <div className="w-full animate-in fade-in slide-in-from-bottom-4 duration-500">
       {/* Table Header */}
@@ -91,22 +110,30 @@ export const DownloadTable = ({ data, searchUrl }: { data: { formatId: string; e
             <div className="flex justify-end">
               <div
                 onClick={() => downloadFile(searchUrl, option?.formatId, option.format, index)}
-                className={`bg-primary text-white font-medium px-4 py-2 h-9.5 md:min-w-47.5 min-w-30.5 min-h-9.5 md:text-[16px] text-sm flex items-center gap-2   ${loadingIndex === index ? "cursor-not-allowed opacity-70 " : "cursor-pointer"} `}
+                className={`h-9.5 md:min-w-47.5 min-w-30.5 min-h-9.5 ${loadingIndex === index ? "cursor-not-allowed " : "cursor-pointer"} `}
               >
                 {loadingIndex === index ? (
-                  <div className="w-full flex items-center justify-center">
-                    <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                  <div className="w-full h-full flex items-center justify-center gap-1">
+                    <div className="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
+                      <div
+                        className="bg-primary h-2 transition-all duration-300"
+                        style={{ width: `${progressMap[index] || 0}%` }}
+                      />
+                    </div>
+                    <span className="text-xs text-center text-white">
+                      {Math.floor(progressMap[index] || 0)}%
+                    </span>
                   </div>
                 ) : option.type === "video" ? (
-                  <>
+                  <div className="bg-primary text-white font-medium px-4 py-2  md:text-[16px] text-sm flex items-center gap-2 rounded-sm">
                     <Download className="w-4 h-4 md:mr-2" />
                     Download <span className="md:block hidden">video</span>
-                  </>
+                  </div>
                 ) : (
-                  <>
+                  <div className="bg-primary text-white font-medium px-4 py-2  md:text-[16px] text-sm flex items-center gap-2 rounded-sm">
                     <Music className="w-4 h-4 md:mr-2" />
                     Download <span className="md:block hidden">audio</span>
-                  </>
+                  </div>
                 )}
               </div>
             </div>
